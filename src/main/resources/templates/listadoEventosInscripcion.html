@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="page">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Test</title>
+        <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+        
+    </head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/HomeUsuario">Home</a>
+    </div>
+  </div>
+</nav>	
+
+<div th:fragment="content">
+
+	<h1>Listado de eventos</h1>
+	
+	<table class="table">
+		<tr>
+			<th>ID.</th>
+			<th>Nombre</th>
+			<th>Perfil profesional</th>
+			<th>Perfil ocupacional</th>
+			<th>Proposito formacion</th>
+			<th>Area formacion</th>
+			<th>Requisitos</th>
+			<th>Contacto</th>
+<!-- 			<th>Habilitado</th> -->
+		</tr>
+		
+		<tr th:each="evento : ${evento}">
+			<td th:text="${evento.numeroIdentificacion}"></td>
+			<td th:text="${evento.nombre}"></td>
+			<td th:text="${evento.perfilProfesional}"></td>
+			<td th:text="${evento.perfilOcupacional}"></td>
+			<td th:text="${evento.propositoFormacion}"></td>
+			<td th:text="${evento.areaFormacion}"></td>
+			<td th:text="${evento.requisitos}"></td>
+			<td th:text="${evento.contacto}"></td>
+<!-- 			<td th:text="${evento.habilitado}"></td> -->
+			
+			<td>
+				<a class="btn btn-primary" th:href="@{/eventos/{idevento}/inscribir(idevento=${evento.numeroIdentificacion})}">Inscribir</a>
+
+			</td>
+		</tr>
+		
+	</table>
+	
+	
+	</div>
+</body>
+</html>

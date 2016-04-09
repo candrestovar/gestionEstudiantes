@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings
+        xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+        version="2.0">
+ 
+    <named-query name="findByTitleIs">
+        <query>SELECT estudiante.numero_identificacion, estudiante.tipo_documento_identificacion, estudiante.nombre, estudiante.apellido, estudiante.fecha_nacimiento, 
+        estudiante.email, estudiante.contrasena, estudiante_programa.etapa 
+FROM estudiante, estudiante_programa 
+WHERE  estudiante_programa.estudiante = estudiante.numero_identificacion
+AND estudiante_programa.programa=? 
+ORDER BY estudiante.numero_identificacion</query>
+    </named-query>
+    
+    <named-query name="findByTitleIsEP">
+        <query>SELECT estudiante_programa.id, estudiante_programa.homologa, estudiante_programa.estudiante, estudiante_programa.programa, estudiante_programa.etapa
+FROM estudiante_programa 
+WHERE estudiante_programa.programa=?   
+ORDER BY estudiante_programa.estudiante</query>
+    </named-query>
+</entity-mappings>

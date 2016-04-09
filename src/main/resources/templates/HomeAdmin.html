@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="page">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Administrador UCC</title>
+      <!-- Estilo del menu deplegable  Isabel Peña -->  
+       <style type="text/css">
+			
+			* {
+				padding:0px;
+				margin:0px;
+			}
+			
+				
+			ul, ol {
+				list-style:none;
+			}
+			
+			.nav li a {
+				background-color:#000;
+				color:#fff;
+				text-decoration:none;
+				padding:3px 15px;
+				display:block;
+			}
+			
+			.nav li a:hover {
+				background-color:#434343;
+			}
+			
+			.nav > li {
+				float:left;
+			}
+			
+			.nav li ul {
+				display:none;
+				position:absolute;
+				min-width:310px;
+			}
+			
+			.nav li:hover > ul {
+				display:block;
+			}
+			
+			.reportes{
+				font-size: 13px; 
+			}
+			
+		</style>
+        
+        
+        
+        <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+        <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+        
+        <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet"/>
+        
+        <link href="assets/css/main.css" rel="stylesheet"/>
+    </head>
+
+  
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/Home">HOME<i class="fa fa-circle"></i></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+<!--             <li class="active"><a href="HomeAdministrador">HOME</a></li> -->
+            <li class="active"><a href="/admin/usuarios/nuevo">NUEVO ADMINISTRADOR</a></li>
+            <li><a href="estudiantes">ESTUDIANTES</a></li>			
+            <li><a href="programas">PROGRAMAS</a></li>
+            <li><a href="eventos">EVENTOS</a></li>
+            <!-- Menu desplegable de Reportes Isabel Peña -->
+           	<li><a href="">REPORTES</a>
+           		<ul class="reportes">
+           			<!-- cada uno de los enlaces direcciona al archivo creado con el mismo nombre -->
+					<li><a href="reporteGeneralPrograma">GENERAL POR PROGRAMA</a></li> 
+					<li><a href="reporteHomologantes">HOMOLOGANTES</a></li>
+					<li><a href="reporteEstrato">GENERAL POR ESTRATO</a></li>
+					<li><a href="reporteGeneralEvento">GENERAL POR EVENTO</a></li>
+					<li><a href="reporteEtapaPreinscripcionEvento">ETAPA DE PRE-INSCRIPCION A EVENTO</a></li>
+					<li><a href="reporteEtapaPreinscripcionPrograma">ETAPA DE PRE-INSCRIPCION A PROGRAMA</a></li>
+					<li><a href="reporteProgramasEventosInhabilitados">PROGRAMAS Y EVENTOS INHABILITADOS</a></li>
+				</ul>
+           	</li>
+           
+           
+            
+            <li>
+				<table border="0">
+				<tr> 
+				<td style="vertical-align:middle;" >
+					<form th:action="@{/logout}" method="post">
+        				<input type="hidden" th:name="${_csrf != null ? _csrf.parameterName : ' '}" th:value="${_csrf != null ? _csrf.token : ' '}" />
+        				<input class="btn btn-default" type="submit" value="Cerrar Sesión"/>	
+    				</form>
+				</td>			
+				</tr> 
+				</table>            	 
+            </li>
+            <li><a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="fa fa-envelope-o"></i></a></li>
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <br></br>
+	<br></br>
+	<br></br>
+
+	<div id="headerwrap">
+	
+		<div class="container">
+			
+			<div class="row centered">
+				<div class="col-lg-8 col-lg-offset-2">
+					<table>
+					<tr>
+						<td>
+						<br></br>
+						<br></br>
+						<img src="Imagenes/universidad-cooperativa-colombia.png" alt="Test" class="logo"/>
+						</td>
+						<td>
+						<h1> Universidad <b>Cooperativa</b></h1><h2>de Colombia</h2>
+						</td>
+					</tr>
+					</table>			
+				</div>
+			</div><!-- row -->
+		</div><!-- container -->
+	</div><!-- headerwrap -->
+
+
+	<div class="container w">
+		<div class="row centered">
+			<br></br>
+			<div class="col-lg-4">
+				<i class="fa fa-heart"></i>
+				<h4>ESTUDIANTES</h4>
+				<p>En esta sección puede conocer todo lo relativo a la información de personas inscritas en el sistema, donde podra gestionar todo lo relativo a los aspirantes y su progreso en los proceso de inscripción</p>
+				<img src="Imagenes/Estudiantes.jpg" alt="Test" class="logo"/>
+			</div>
+
+			<div class="col-lg-4">
+				<i class="fa fa-laptop"></i>
+				<h4>PROGRAMAS</h4>				
+				<p>Esta sección ha sido diseñada para que el administrador pueda administrar la oferta de programas con los que cuenta la facultad de ingenierias, agregando o modificando los datos requeridos por los aspirantes .</p>
+				<img src="Imagenes/Programas.png" alt="Test" class="logo"/>
+			</div>
+
+			<div class="col-lg-4">
+				<i class="fa fa-trophy"></i>
+				<h4>EVENTOS</h4>
+				<p>Esta sección ha sido diseñada para que el administrador pueda administrar la oferta de eventos con los que cuenta la facultad de ingenierias, agregando o modificando los datos requeridos por los aspirantes</p>
+				<img src="Imagenes/Eventos.png" alt="Test" class="logo"/>
+ 			</div>
+ 		</div><!--row centered -->
+		<br></br>
+	</div>
+
+
+	<!-- FEATURE SECTION -->
+	<div class="container wb">
+		<div class="row centered">
+			<br></br>
+			<div class="col-lg-8 col-lg-offset-2">
+				<h4>ADMINISTRADOR</h4>
+				<p>Su usuario cuenta con todos los privilegios para crear, modificar o eliminar a otros usuarios, programas o eventos de ésta plataforma web. Si usted no ostenta la calidad de Decano o administrador del sistema, por favor termine la sesion inmediatamente.</p>
+			<p><br/><br/></p>
+			</div>
+			
+		</div><!-- row -->
+	</div><!-- container -->
+	
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>
